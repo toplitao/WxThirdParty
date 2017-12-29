@@ -8,12 +8,17 @@ use App\Http\Controllers\WxThirdParty\Services\wxCryptSDK\HTTP;
 
 class WxThirdPartyService{
 
-    public $appId = "wxc734fe744bd6db62";
-    public $appsecret="d8e609645313ab407a6305eafbfce892";    
-    public $encodingAesKey = "gtsfsdf654532hfgjghsfs4234fsdfsdg232443dfge";
-    public $token = "45fw53fsdghjdfq3444rewfsdfaqr";
+    public $appId = '';
+    public $appsecret='';    
+    public $encodingAesKey = '';
+    public $token = '';
 
-    public function __construct(){}
+    public function __construct(){
+        $this->appId = env('appId');
+        $this->appsecret=env('appsecret');    
+        $this->encodingAesKey = env('encodingAesKey');
+        $this->token = env('token');
+    }
     
     private function getWxMsgData(){
         $format=Cache::store('file')->get('verify_ticket_post_data');
