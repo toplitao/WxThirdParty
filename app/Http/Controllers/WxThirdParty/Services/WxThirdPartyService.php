@@ -49,6 +49,7 @@ class WxThirdPartyService{
 
     public function getPreAuthCode(){
         $http= new HTTP();
+        print_r($this->getComponentAccessToken());
         $component_access_token=$this->getComponentAccessToken()['component_access_token'];
         $data=$http->https_post('https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token='.$component_access_token.'',json_encode([//需要JSON格式！！！
             "component_appid"=>$this->appId ,
